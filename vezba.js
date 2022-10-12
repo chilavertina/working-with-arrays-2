@@ -156,3 +156,15 @@ const godinaRodjenja = [1993, 1965, 1966, 2001, 1943, 1998, 2012];
 const starost = godinaRodjenja.map(godina => 2022 - godina);
 console.log(starost);
 */
+
+// const userNamePodatak = function (akaunt) {
+//   akaunt.forEach(function (aka) {
+//     aka.username = aka.owner
+//       .toLowerCase()
+//       .split(' ')
+//       .map(rec => rec[0])
+//       .join('');
+//   });
+// };
+// userNamePodatak(accounts);
+// console.log(account3);
