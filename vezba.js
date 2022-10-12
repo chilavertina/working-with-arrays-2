@@ -83,7 +83,7 @@ console.log(tenkovi);
 // };
 
 // console.log(prvoSlovo(tenk));
-
+/*
 tenkovi.forEach(function (tenk) {
   if (tenk.split(' ').map(word => word[0]) == 't') {
     console.log(`${tenk} je ruske proizvodnje`);
@@ -99,3 +99,27 @@ tenkovi.forEach(function (tenk, i) {
     console.log(`${tenk} pod brojem ${i + 1} nije ruske proizvodnje`);
   }
 });
+*/
+
+// const kateData = [4, 1, 15, 8, 3];
+// const juliaData = [3, 5, 2, 12, 7];
+
+// const kateData = [10, 5, 6, 1, 4];
+// const juliaData = [9, 16, 6, 8, 3];
+
+const checkDogs = function (kateData, juliaData) {
+  const juliaDataCopy = juliaData.slice();
+  const juliaDataOnlyDogs = juliaDataCopy.slice(1, -2);
+  const dogs = juliaDataOnlyDogs.concat(kateData);
+  console.log(dogs);
+
+  dogs.forEach(function (dog, i) {
+    if (dog >= 3) {
+      console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+    } else if (dog < 3) {
+      console.log(`Dog number ${i + 1} is still a puppy 🐶`);
+    }
+  });
+};
+checkDogs([4, 1, 15, 8, 3], [3, 5, 2, 12, 7]);
+checkDogs([10, 5, 6, 1, 4], [9, 16, 6, 8, 3]);
