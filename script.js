@@ -61,6 +61,25 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const prikaziTransakcije = function (transakcije) {
+  containerMovements.innerHTML = ''; //ovo omogucava da obrisemo html podatke sa stranice koji se vec nalaze u html kodu na samom startu
+
+  transakcije.forEach(function (trans, i) {
+    const type = trans > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+          <div class="movements__value">${trans}</div>
+        </div>
+        `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+prikaziTransakcije(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
