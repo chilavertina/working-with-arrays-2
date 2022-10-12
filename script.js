@@ -201,3 +201,49 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 */
+
+///MAP METODA - smesta podatke u novi niz
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const usdKurs = 120.7;
+
+const usdMenjacnica = movements.map(function (svota) {
+  return svota * usdKurs;
+});
+
+console.log(usdMenjacnica);
+
+//drugi nacin uz pomoc for of
+
+const menjacnica = [];
+for (const svota of movements) {
+  menjacnica.push(svota * usdKurs);
+}
+console.log(menjacnica);
+
+//uz pomoc ARROW FUNKCIJE
+const dolarUDinar = movements.map(svota => svota * usdKurs);
+console.log(dolarUDinar);
+
+///////////////////////////////////////////////////
+
+const opisTransakcija = movements.map((svota, i, arr) => {
+  if (svota > 0) {
+    return `Transakcija ${i + 1}: Priliv ${Math.abs(svota)} dolara.`;
+  } else if (svota < 0) {
+    return `Odliv ${i + 1}: Odliv ${Math.abs(svota)} dolara.`;
+  }
+});
+console.log(opisTransakcija);
+
+/*
+//uz pomoc ARROW FUNKCIJE
+const opisTransakcija = movements.map(
+  (svota, i) =>
+    `Transakcija ${i + 1}: ${svota > 0 ? 'Priliv' : 'Odliv'} ${Math.abs(
+      svota
+    )} dolara.`
+);
+console.log(opisTransakcija);
+*/
