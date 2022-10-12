@@ -106,7 +106,7 @@ tenkovi.forEach(function (tenk, i) {
 
 // const kateData = [10, 5, 6, 1, 4];
 // const juliaData = [9, 16, 6, 8, 3];
-
+/*
 const checkDogs = function (kateData, juliaData) {
   const juliaDataCopy = juliaData.slice();
   const juliaDataOnlyDogs = juliaDataCopy.slice(1, -2);
@@ -123,3 +123,36 @@ const checkDogs = function (kateData, juliaData) {
 };
 checkDogs([4, 1, 15, 8, 3], [3, 5, 2, 12, 7]);
 checkDogs([10, 5, 6, 1, 4], [9, 16, 6, 8, 3]);
+*/
+
+//////////////////////
+
+/* MAP METODA
+const juliaData = [3, 5, 2, 12, 7];
+
+const kucici = juliaData.map(function (godina, i) {
+  if (godina >= 3) {
+    return `Pas pod rednim brojem ${
+      i + 1
+    } je odrastao pas i ima ${godina} godina.`;
+  } else {
+    return `Pas pod rednim brojem ${i + 1} je stene i ima ${godina} godine`;
+  }
+});
+console.log(kucici);
+
+const godine = [1993, 1965, 2022, 2005, 2003, 1975];
+
+const vek = godine.map(
+  (godina, i) =>
+    `Godina ${godina}. koja je na rednom broju ${i + 1} pripada ${
+      godina > 2000 ? '21.' : '20.'
+    } veku.`
+);
+console.log(vek);
+
+const godinaRodjenja = [1993, 1965, 1966, 2001, 1943, 1998, 2012];
+
+const starost = godinaRodjenja.map(godina => 2022 - godina);
+console.log(starost);
+*/
