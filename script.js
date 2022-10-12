@@ -80,6 +80,51 @@ const prikaziTransakcije = function (transakcije) {
 };
 
 prikaziTransakcije(account1.movements);
+
+// const dolarUDinar = movements.map(svota => svota * usdKurs);
+// console.log(dolarUDinar);
+
+const createUserName = function (user) {
+  const username = user
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return username;
+};
+console.log(createUserName('Steven Thomas Williams'));
+
+/////////// IZBOR PRVOG SLOVA U SVAKOM STRINGU
+
+// const ime = 'Steven Thomas Williams';
+/*
+const inicijali = ime
+  .toLowerCase()
+  .split(' ')
+  .map(function (rec) {
+    return rec[0];
+  })
+  .join('');
+console.log(inicijali);
+*/
+/*moje resenje
+const inicijali = ime
+  .toLowerCase()
+  .split(' ')
+  .map(rec => rec[0])
+  .join('');
+console.log(inicijali);
+*/
+
+/*moje resenje
+const imeNiz = ime.split(' ');
+console.log(imeNiz);
+const inicijali = imeNiz.map(rec => rec[0]).join('');
+console.log(inicijali);
+const maliInicijali = inicijali.toLowerCase();
+console.log(maliInicijali);
+*/
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
