@@ -293,3 +293,22 @@ const opisTransakcija = movements.map(
 );
 console.log(opisTransakcija);
 */
+
+//FILTER
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+
+console.log(withdrawals);
+//console.log(deposits);
+
+//for of primer
+const deposits2 = [];
+for (const transakcija of movements) {
+  if (transakcija > 0) deposits2.push(transakcija);
+}
+console.log(deposits2);
