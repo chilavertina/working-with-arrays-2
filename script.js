@@ -72,7 +72,7 @@ const prikaziTransakcije = function (transakcije) {
           <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-          <div class="movements__value">${trans}</div>
+          <div class="movements__value">${trans}€</div>
         </div>
         `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -80,6 +80,32 @@ const prikaziTransakcije = function (transakcije) {
 };
 
 prikaziTransakcije(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((akumul, vrednost) => akumul + vrednost, 0);
+  labelBalance.textContent = `${balance} €`;
+};
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const inSummary = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${inSummary}€`;
+
+  const outSummary =
+    movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0) * -1; //umesto mnozenja sa -1 moze se ispod napisati `${Math.abs(outSummary)}€`
+  labelSumOut.textContent = `${outSummary}€`; //`${Math.abs(outSummary)}€` ako necemo da mnozimo sa -1
+
+  const interestSummary = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter(mov => mov >= 1) //banka dodaje kamatu samo ako je ona veca ili jednaka 1
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumInterest.textContent = `${interestSummary}€`;
+};
+
+calcDisplaySummary(account1.movements);
 
 // const dolarUDinar = movements.map(svota => svota * usdKurs);
 // console.log(dolarUDinar);
@@ -96,13 +122,7 @@ const createUserName = function (accs) {
 createUserName(accounts);
 console.log(accounts);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((akumul, vrednost) => akumul + vrednost, 0);
-  labelBalance.textContent = `${balance} €`;
-};
-calcDisplayBalance(account1.movements);
-
-/*
+/* moje resenje prikaza bilansa
 const calcPrintBalance = function (vrednosti) {
   labelBalance.innerHTML = '';
 
