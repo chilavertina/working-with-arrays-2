@@ -84,16 +84,17 @@ prikaziTransakcije(account1.movements);
 // const dolarUDinar = movements.map(svota => svota * usdKurs);
 // console.log(dolarUDinar);
 
-const createUserName = function (user) {
-  const username = user
-    .toLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  return username;
+const createUserName = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
 };
-console.log(createUserName('Steven Thomas Williams'));
-
+createUserName(accounts);
+console.log(accounts);
 /////////// IZBOR PRVOG SLOVA U SVAKOM STRINGU
 
 // const ime = 'Steven Thomas Williams';
