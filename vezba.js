@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const tenkovi = ['m84', 't72', 't90', 't72ms', 't55', 'abrams m1', 'leopard2'];
 console.log(tenkovi);
@@ -168,3 +168,10 @@ console.log(starost);
 // };
 // userNamePodatak(accounts);
 // console.log(account3);
+
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
