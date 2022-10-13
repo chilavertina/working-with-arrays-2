@@ -211,7 +211,7 @@ const calcAverageHumanAge = function (godina) {
 calcAverageHumanAge(ages);
 console.log(ljudskeGodine);
 */
-
+/*
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
   const adults = humanAges.filter(age => age >= 18);
@@ -229,6 +229,17 @@ const calcAverageHumanAge = function (ages) {
 
   return average;
 };
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
+*/
+
+const calcAverageHumanAge = ages =>
+  ages
+    .map(vrednost => (vrednost <= 2 ? 2 * vrednost : 16 + vrednost * 4))
+    .filter(vrednost => vrednost >= 18)
+    .reduce((acc, vrednost, i, arr) => acc + vrednost / arr.length, 0);
+
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
