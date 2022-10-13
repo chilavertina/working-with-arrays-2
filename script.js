@@ -104,26 +104,19 @@ calcDisplayBalance(account1.movements);
 
 /*
 const calcPrintBalance = function (vrednosti) {
-  containerMovements.innerHTML = '';
-  vrednosti.forEach(function (transakcija) {
-    const balans = transakcija.reduce(function (akumulator, vrednost, i, niz) {
-      return akumulator + vrednost;
-    }, 0);
+  labelBalance.innerHTML = '';
 
-    const html = `<div class="balance">
-    <div>
-      <p class="balance__label">Current balance</p>
-      <p class="balance__date">
-        As of <span class="date">05/03/2037</span>
-      </p>
-    </div>
+  const balans = vrednosti.reduce(function (akumulator, vrednost, i, niz) {
+    return akumulator + vrednost;
+  }, 0);
+
+  const html = `
     <p class="balance__value">${balans}€</p>
-  </div>`;
-  });
+ `;
+  labelBalance.insertAdjacentHTML('afterbegin', html);
 };
 calcPrintBalance(account1.movements);
 */
-
 /////////// IZBOR PRVOG SLOVA U SVAKOM STRINGU
 
 // const ime = 'Steven Thomas Williams';
