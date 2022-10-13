@@ -294,6 +294,9 @@ const opisTransakcija = movements.map(
 console.log(opisTransakcija);
 */
 
+/////////////////////////////////////////////
+
+/*
 //FILTER
 const deposits = movements.filter(function (mov) {
   return mov > 0;
@@ -312,3 +315,25 @@ for (const transakcija of movements) {
   if (transakcija > 0) deposits2.push(transakcija);
 }
 console.log(deposits2);
+*/
+
+//REDUCE metoda - funkcionise kao grudva (moze da spaja sve vrednosti iz niza u jednu vrednost)
+
+const balance = movements.reduce(function (akumulator, vrednost, i, niz) {
+  return akumulator + vrednost;
+}, 0); //0 je pocetna vrednost akumulatora
+console.log(balance);
+
+//arrow primer
+const balance3 = movements.reduce(
+  (akumulator, vrednost) => akumulator + vrednost,
+  0
+);
+console.log(balance3);
+
+//for of primer
+let balance2 = 0;
+for (const transakcija of movements) {
+  balance2 = balance2 + transakcija;
+}
+console.log(balance2);
