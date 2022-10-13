@@ -359,3 +359,13 @@ for (const transakcija of movements) {
   balance2 = balance2 + transakcija;
 }
 console.log(balance2);
+
+//maximum value
+const max = movements.reduce((akumul, vrednost) => {
+  if (akumul > vrednost) {
+    return akumul;
+  } else {
+    return vrednost;
+  }
+}, movements[0]);
+console.log(max);
