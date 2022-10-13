@@ -338,7 +338,7 @@ for (const transakcija of movements) {
 }
 console.log(deposits2);
 */
-
+/*
 //REDUCE metoda - funkcionise kao grudva (moze da spaja sve vrednosti iz niza u jednu vrednost)
 
 const balance = movements.reduce(function (akumulator, vrednost, i, niz) {
@@ -369,3 +369,12 @@ const max = movements.reduce((akumul, vrednost) => {
   }
 }, movements[0]);
 console.log(max);
+*/
+
+//////////// METODS CHAINING
+
+const ukupniDepozitUDinarima = movements
+  .filter(vrednost => vrednost > 0) //vraca niz
+  .map(vrednost => vrednost * usdKurs) //vraca niz
+  .reduce((akum, vrednost) => vrednost + akum, 0); //vraca vrednost, zato mora biti poslednji u lancu
+console.log(`${ukupniDepozitUDinarima} dinara`);
