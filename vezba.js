@@ -175,3 +175,60 @@ console.log(starost);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+
+///CODING CHALLENGE 2
+/*
+//moje resenje
+const ages = [5, 2, 4, 1, 15, 8, 3];
+// const ages = [16, 6, 10, 5, 6, 1, 4];
+const ljudskeGodine = [];
+
+const calcAverageHumanAge = function (godina) {
+  ages.forEach(function (vrednost, i, arr) {
+    if (vrednost <= 2) {
+      const humanAge = vrednost * 2;
+      ljudskeGodine.push(humanAge);
+      // console.log(humanAge);
+    } else if (vrednost > 2) {
+      const humanAge = 16 + vrednost * 4;
+      ljudskeGodine.push(humanAge);
+      // console.log(humanAge);
+    }
+  });
+
+  const olderThan18 = ljudskeGodine.filter(function (godina) {
+    return godina >= 18;
+  });
+  console.log(olderThan18);
+
+  const average =
+    olderThan18.reduce(function (akumul, vrednost) {
+      return Math.round(akumul + vrednost);
+    }, 0) / olderThan18.length;
+  console.log(average);
+};
+
+calcAverageHumanAge(ages);
+console.log(ljudskeGodine);
+*/
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAges.filter(age => age >= 18);
+  console.log(humanAges);
+  console.log(adults);
+
+  // const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+
+  const average = adults.reduce(
+    (acc, age, i, arr) => acc + age / arr.length,
+    0
+  );
+
+  // 2 3. (2+3)/2 = 2.5 === 2/2+3/2 = 2.5
+
+  return average;
+};
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
