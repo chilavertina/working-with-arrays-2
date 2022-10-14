@@ -87,19 +87,20 @@ const calcDisplayBalance = function (movements) {
 };
 // calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const inSummary = movements
+const calcDisplaySummary = function (acc) {
+  const inSummary = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${inSummary}€`;
 
   const outSummary =
-    movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0) * -1; //umesto mnozenja sa -1 moze se ispod napisati `${Math.abs(outSummary)}€`
+    acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0) *
+    -1; //umesto mnozenja sa -1 moze se ispod napisati `${Math.abs(outSummary)}€`
   labelSumOut.textContent = `${outSummary}€`; //`${Math.abs(outSummary)}€` ako necemo da mnozimo sa -1
 
-  const interestSummary = movements
+  const interestSummary = acc.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * currentAccount.interestRate) / 100)
+    .map(mov => (mov * acc.interestRate) / 100)
     .filter(mov => mov >= 1) //banka dodaje kamatu samo ako je ona veca ili jednaka 1
     .reduce((acc, mov) => acc + mov, 0);
   labelSumInterest.textContent = `${interestSummary}€`;
@@ -149,7 +150,7 @@ btnLogin.addEventListener('click', function (e) {
     //Display balance
     calcDisplayBalance(currentAccount.movements);
     // Display summary
-    calcDisplaySummary(currentAccount.movements);
+    calcDisplaySummary(currentAccount);
   }
 });
 
