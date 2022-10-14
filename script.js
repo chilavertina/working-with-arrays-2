@@ -99,7 +99,7 @@ const calcDisplaySummary = function (movements) {
 
   const interestSummary = movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * currentAccount.interestRate) / 100)
     .filter(mov => mov >= 1) //banka dodaje kamatu samo ako je ona veca ili jednaka 1
     .reduce((acc, mov) => acc + mov, 0);
   labelSumInterest.textContent = `${interestSummary}€`;
