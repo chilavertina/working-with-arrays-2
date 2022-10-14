@@ -81,9 +81,12 @@ const prikaziTransakcije = function (transakcije) {
 
 // prikaziTransakcije(account1.movements);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((akumul, vrednost) => akumul + vrednost, 0);
-  labelBalance.textContent = `${balance} €`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce(
+    (akumul, vrednost) => akumul + vrednost,
+    0
+  );
+  labelBalance.textContent = `${acc.balance} €`;
 };
 // calcDisplayBalance(account1.movements);
 
@@ -148,7 +151,7 @@ btnLogin.addEventListener('click', function (e) {
     // Display movements
     prikaziTransakcije(currentAccount.movements);
     //Display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
     // Display summary
     calcDisplaySummary(currentAccount);
   }
