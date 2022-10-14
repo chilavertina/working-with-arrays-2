@@ -125,6 +125,15 @@ const createUserName = function (accs) {
 };
 createUserName(accounts);
 
+const updateUI = function (acc) {
+  // Display movements
+  prikaziTransakcije(acc.movements);
+  //Display balance
+  calcDisplayBalance(acc);
+  // Display summary
+  calcDisplaySummary(acc);
+};
+
 //////EVENT HANDLER
 let currentAccount;
 
@@ -148,12 +157,7 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.value = '';
     inputLoginPin.blur(); //blur sluzi da ne ostane fokus (linija koja treperi) u polju nakon unosa podataka i login-a
 
-    // Display movements
-    prikaziTransakcije(currentAccount.movements);
-    //Display balance
-    calcDisplayBalance(currentAccount);
-    // Display summary
-    calcDisplaySummary(currentAccount);
+    updateUI(currentAccount);
   }
 });
 
@@ -172,6 +176,8 @@ btnTransfer.addEventListener('click', function (e) {
   ) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
+
+    updateUI(currentAccount);
   }
 });
 
