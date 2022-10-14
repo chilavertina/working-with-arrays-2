@@ -170,6 +170,8 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAcc &&
     receiverAcc?.username !== currentAccount.username
   ) {
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
   }
 });
 
