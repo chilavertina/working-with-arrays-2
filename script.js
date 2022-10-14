@@ -79,13 +79,13 @@ const prikaziTransakcije = function (transakcije) {
   });
 };
 
-prikaziTransakcije(account1.movements);
+// prikaziTransakcije(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((akumul, vrednost) => akumul + vrednost, 0);
   labelBalance.textContent = `${balance} €`;
 };
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 const calcDisplaySummary = function (movements) {
   const inSummary = movements
@@ -105,7 +105,7 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `${interestSummary}€`;
 };
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 // const dolarUDinar = movements.map(svota => svota * usdKurs);
 // console.log(dolarUDinar);
@@ -120,7 +120,38 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
-console.log(accounts);
+
+//////EVENT HANDLER
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  //Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //currentAccount?.pin ovo uz pomoc '?' proverava da li uneti account postoji
+    //Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    // Clear input fields
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+    inputLoginPin.blur(); //blur sluzi da ne ostane fokus (linija koja treperi) u polju nakon unosa podataka i login-a
+
+    // Display movements
+    prikaziTransakcije(currentAccount.movements);
+    //Display balance
+    calcDisplayBalance(currentAccount.movements);
+    // Display summary
+    calcDisplaySummary(currentAccount.movements);
+  }
+});
 
 /* moje resenje prikaza bilansa
 const calcPrintBalance = function (vrednosti) {
