@@ -225,8 +225,9 @@ console.log(arr.at(-1));
 const str = 'uros';
 console.log(str.at(1));
 */
-/*
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/*
 //raniji nacin
 for (const transakcija of movements) {
   if (transakcija > 0) {
@@ -289,7 +290,7 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 */
-
+/*
 ///MAP METODA - smesta podatke u novi niz
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -324,7 +325,7 @@ const opisTransakcija = movements.map((svota, i, arr) => {
   }
 });
 console.log(opisTransakcija);
-
+*/
 /*
 //uz pomoc ARROW FUNKCIJE
 const opisTransakcija = movements.map(
@@ -392,9 +393,27 @@ console.log(max);
 */
 
 //////////// METODS CHAINING
-
+/*
 const ukupniDepozitUDinarima = movements
   .filter(vrednost => vrednost > 0) //vraca niz
   .map(vrednost => vrednost * usdKurs) //vraca niz
   .reduce((akum, vrednost) => vrednost + akum, 0); //vraca vrednost, zato mora biti poslednji u lancu
 console.log(`${ukupniDepozitUDinarima} dinara`);
+*/
+
+/////////////// FIND metoda - vraca prvi element niza koji zadovoljava uslov metode
+
+const prviOdliv = movements.find(mov => mov < 0);
+
+console.log(movements);
+console.log(prviOdliv);
+
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(account);
+
+// for of primer
+for (const account of accounts) {
+  if (account.owner === 'Jessica Davis') {
+    console.log(account);
+  }
+}
