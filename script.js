@@ -528,3 +528,12 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(account4.movements.every(deposit));
 console.log(movements.every(deposit));
+
+///// FLAT metoda
+const arr = [[1, 2, 3], 4, 5, [6, 7, 8]];
+console.log(arr.flat());
+const deepArr = [[1, [2, 3]], 4, 5, [6, [7], 8]];
+console.log(deepArr.flat()); //flat metoda ide do samo jednog nivoa 'nesting' nizova
+console.log(deepArr.flat(2)); //ako ubacimo zeljeni nivo u funkciju flat-a, onda ce flat ici do zeljenog nivoa
+
+/////
