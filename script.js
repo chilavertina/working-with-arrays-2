@@ -519,6 +519,12 @@ for (const account of accounts) {
 const anyDeposits = movements.some(mov => mov > 0);
 console.log(anyDeposits);
 
-///// EVERY metoda
+///// EVERY metoda svi elementi niza moraju da zadovolje uslov da bi bilo true
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 0));
+
+//// izdvojena callback funkcija
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(account4.movements.every(deposit));
+console.log(movements.every(deposit));
