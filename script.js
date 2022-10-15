@@ -182,6 +182,21 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  // const amount = Number(inputLoanAmount.value); --- mozemo amount da ubacimo u kod na svim mestima umesto 'Number(inputLoanAmount.value)'
+  if (
+    Number(inputLoanAmount.value) > 0 &&
+    currentAccount.movements.some(
+      mov => mov >= Number(inputLoanAmount.value * 0.1)
+    )
+  ) {
+    currentAccount.movements.push(Number(inputLoanAmount.value));
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
