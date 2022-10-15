@@ -536,4 +536,17 @@ const deepArr = [[1, [2, 3]], 4, 5, [6, [7], 8]];
 console.log(deepArr.flat()); //flat metoda ide do samo jednog nivoa 'nesting' nizova
 console.log(deepArr.flat(2)); //ako ubacimo zeljeni nivo u funkciju flat-a, onda ce flat ici do zeljenog nivoa
 
-/////
+///// primer vezivanja metoda
+const accMovements = accounts.map(acc => acc.movements);
+console.log(accMovements);
+const ukupniBilansSvihKlijenata = accounts
+  .map(acc => acc.movements) //izdvaja transakcije u zasebne nizove
+  .flat() //sve nizove spaja u jedan niz
+  .reduce((akum, vrednost) => akum + vrednost, 0); //sabira sve vrednosti u nizu
+console.log(ukupniBilansSvihKlijenata);
+
+/////// flatMap metoda
+const ukupniBilansSvihKlijenata2 = accounts
+  .flatMap(acc => acc.movements) // spaja map i flat metode u jednu metodu (ali ide samo do prvog nivo)
+  .reduce((akum, vrednost) => akum + vrednost, 0);
+console.log(ukupniBilansSvihKlijenata2);
