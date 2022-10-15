@@ -514,7 +514,7 @@ for (const account of accounts) {
   }
 }
 */
-
+/*
 ////// SOME metoda
 const anyDeposits = movements.some(mov => mov > 0);
 console.log(anyDeposits);
@@ -550,3 +550,40 @@ const ukupniBilansSvihKlijenata2 = accounts
   .flatMap(acc => acc.movements) // spaja map i flat metode u jednu metodu (ali ide samo do prvog nivo)
   .reduce((akum, vrednost) => akum + vrednost, 0);
 console.log(ukupniBilansSvihKlijenata2);
+*/
+
+/////// SORT metoda - metoda mutate originalni niz
+
+/// stringovi primer
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort()); //sort ce poredjati imena po abecednom redu, posto elemente uvek gleda kao STRINGOVE (isto ce biti i sa brojevima)
+//sto znaci da ce broj 100 kao string biti uvek ispred 50, jer je 1 manji od 5
+console.log(owners); // niz je mutated
+
+// brojevi primer
+console.log(movements);
+console.log(movements.sort()); //ovde su brojevi u nizu poremeceni (1300 je vece od 200)
+
+// nacin kako sortirati brojeve po rastucem nizu (ili opadajucem)
+//return < 0, A,B (zadrzava se redosled)
+//return > 0 B,A (menja se redosled)
+
+//rastuci niz
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(movements);
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+//opadajuci niz
+movements.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});
+console.log(movements);
+
+movements.sort((a, b) => b - a);
+console.log(movements);
