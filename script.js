@@ -483,7 +483,7 @@ console.log(`${ukupniDepozitUDinarima} dinara`);
 */
 
 /////////////// FIND metoda - vraca prvi element niza koji zadovoljava uslov metode
-
+/*
 const prviOdliv = movements.find(mov => mov < 0);
 
 console.log(movements);
@@ -498,3 +498,8 @@ for (const account of accounts) {
     console.log(account);
   }
 }
+*/
+
+////// SOME metoda
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
