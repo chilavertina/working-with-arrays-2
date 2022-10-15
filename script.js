@@ -221,9 +221,11 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  prikaziTransakcije(currentAccount.movements, true);
+  prikaziTransakcije(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 /* moje resenje prikaza bilansa
