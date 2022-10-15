@@ -518,3 +518,7 @@ for (const account of accounts) {
 ////// SOME metoda
 const anyDeposits = movements.some(mov => mov > 0);
 console.log(anyDeposits);
+
+///// EVERY metoda
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
