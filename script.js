@@ -61,10 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const prikaziTransakcije = function (transakcije) {
+const prikaziTransakcije = function (transakcije, sort = false) {
+  // sort je ovde false zato sto zelimo da se sort aktivira (da bude true) tek kada kliknemo na sort dugme
   containerMovements.innerHTML = ''; //ovo omogucava da obrisemo html podatke sa stranice koji se vec nalaze u html kodu na samom startu
 
-  transakcije.forEach(function (trans, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements; //ovde koristimo slice() kako bismo sortirali kopiju, a ne originalni niz
+
+  movs.forEach(function (trans, i) {
     const type = trans > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
