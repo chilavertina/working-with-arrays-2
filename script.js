@@ -598,7 +598,7 @@ console.log(movements);
 movements.sort((a, b) => b - a);
 console.log(movements);
 */
-
+/*
 ///////////// EMPTY ARRAY + FILL METODA
 const x = new Array(7); //ovaj nacin ce samo stvoriti niz sa sedam praznih mesta
 console.log(x);
@@ -635,3 +635,96 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
+*/
+
+// 1. racunanje bilansa, depozita i odliva
+const sviBilansi = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((akum, mov) => akum + mov, 0);
+console.log(sviBilansi);
+
+const sviDepoziti = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((akum, mov) => akum + mov, 0);
+console.log(sviDepoziti);
+
+const sviOdlivi = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov < 0)
+  .reduce((akum, mov) => akum + mov, 0);
+console.log(sviOdlivi);
+
+// 2. koliko je depozita bilo preko 1000 dinara
+const depozitPreko1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
+console.log(depozitPreko1000);
+
+// resenje zadatka uz pomoc reduce metode
+const depozitPreko1000Reduce = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((akum, mov) => (mov >= 1000 ? akum + 1 : akum), 0);
+console.log(depozitPreko1000Reduce);
+
+// 3. stvaranje objekta uz pomoc reduce metode tako sto ce svrstavati prilive i odlive u objekat
+const prilivOdlivObjekat = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    function (akum, mov) {
+      if (mov > 0) {
+        akum.priliv = akum.priliv + mov;
+      } else {
+        akum.odliv = akum.odliv + mov;
+      }
+      return akum;
+    },
+    {
+      priliv: 0,
+      odliv: 0,
+    }
+  );
+console.log(prilivOdlivObjekat);
+
+// resenje sa kursa
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, mov) => {
+      // mov > 0 ? (sum.priliv = sum.priliv + mov) : (sum.odliv = sum.odliv + mov);
+      sum[mov > 0 ? 'priliv' : 'odliv'] += mov;
+      return sum;
+    },
+    { priliv: 0, odliv: 0 }
+  );
+console.log(sums);
+
+// 4.
+// this is a nice title => This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1); // svako prvo slovo u recenici da bude veliko
+
+  const exceptions = ['a', 'an', 'the', 'but', 'and', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase() // smanjujemo slova svih reci
+    .split(' ') // stavljamo reci u jedan niz
+    .map(
+      rec =>
+        exceptions.includes(rec) ? rec : rec[0].toUpperCase() + rec.slice(1) // svako prvo slovo osim izuzetaka postavljamo kao veliko
+    )
+    .join(' '); // pretvaramo niz u string
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+/*
+const inicijali = ime
+  .toLowerCase()
+  .split(' ')
+  .map(rec => rec[0])
+  .join('');
+  */
