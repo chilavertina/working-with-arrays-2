@@ -561,7 +561,7 @@ const ukupniBilansSvihKlijenata2 = accounts
   .reduce((akum, vrednost) => akum + vrednost, 0);
 console.log(ukupniBilansSvihKlijenata2);
 */
-
+/*
 /////// SORT metoda - metoda mutate originalni niz
 
 /// stringovi primer
@@ -597,3 +597,31 @@ console.log(movements);
 
 movements.sort((a, b) => b - a);
 console.log(movements);
+*/
+
+///////////// EMPTY ARRAY + FILL METODA
+const x = new Array(7); //ovaj nacin ce samo stvoriti niz sa sedam praznih mesta
+console.log(x);
+x.fill(1); // uz pomoc fill popunicemo ceo niz navedenom vrednoscu [1, 1, 1, 1, 1, 1, 1]
+console.log(x);
+const y = new Array(6);
+y.fill(1, 3); // kada ubacimo dva parametra u funkciju fill, u ovom slucaju ce prva tri mesta u nizu ostati prazna,a ostala ce se popuniti vrednoscu broj 1
+console.log(y);
+const z = new Array(7);
+z.fill(1, 3, 5); // ovde ce prva tri mesta ostati prazna, pa ce se niz popunjavati do 5. mesta, nakon cega ce dalje ostati prazan
+console.log(z);
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 4, 6); // ovde ce broj 23 biti ubacen izmedju 4. i 6. mesta u nizu i zamenice vrednosti u nizu na tim mestima
+console.log(arr);
+
+// Array.from metoda
+const a = Array.from({ length: 7 }, () => 1); // popunjava se niz brojem jedan u duzini od 7 mesta
+console.log(a);
+const b = Array.from({ length: 7 }, (_, i) => i + 1); // popunjava se niz od 1 do 7
+console.log(b); // _ oznacava da nam nije potrebna pocetna vrednost
+
+const diceRoll = Array.from(
+  { length: 100 },
+  () => Math.floor(6 * Math.random()) + 1
+);
+console.log(diceRoll);
