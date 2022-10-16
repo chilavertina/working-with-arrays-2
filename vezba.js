@@ -244,3 +244,69 @@ const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
 */
+
+// CODING CHALLENGE 4
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)));
+console.log(dogs);
+
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+
+// const arr = [[1, 2, 3], 4, 5, [6, 7, 8]];
+// console.log(arr.flat());
+// const deepArr = [[1, [2, 3]], 4, 5, [6, [7], 8]];
+// console.log(deepArr.flat()); //flat metoda ide do samo jednog nivoa 'nesting' nizova
+// console.log(deepArr.flat(2)); //ako ubacimo zeljeni nivo u funkciju flat-a, onda ce flat ici do zeljenog nivoa
+
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+const dogEating = function (foodR, foodC) {
+  const eatFine = foodC > foodR * 0.9 && foodC < foodR * 1.1;
+
+  if (eatFine) {
+    console.log('Sarah dog eats fine');
+  } else if (foodC > eatFine) {
+    console.log('Sarah dog eats too much');
+  } else if (foodC < eatFine) {
+    console.log('Sarah dog eats too little');
+  }
+};
+
+dogEating(dogSarah.recFood, dogSarah.curFood);
+
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
+
+console.log(ownersEatTooLittle);
+console.log(ownersEatTooMuch);
+
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little.`);
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much.`);
+
+console.log(dogs.some(food => food.curFood === food.recFood));
+
+const okFood = dogs.some(
+  food => food.curFood > food.recFood * 0.9 && food.curFood < food.recFood * 1.1
+);
+console.log(okFood);
+
+const okDogs = dogs.filter(
+  dog => dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1
+);
+console.log(okDogs);
+
+const sortiranje = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(sortiranje);
