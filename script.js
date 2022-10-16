@@ -625,3 +625,13 @@ const diceRoll = Array.from(
   () => Math.floor(6 * Math.random()) + 1
 );
 console.log(diceRoll);
+
+// ubacivanje vrednosti transakcija sa UI uz pomoc Array.from metode
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', '')) //ovo je map metoda kao drugi parametar
+  );
+  console.log(movementsUI);
+});
